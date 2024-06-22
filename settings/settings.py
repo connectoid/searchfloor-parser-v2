@@ -7,8 +7,8 @@ path = 'books'
 db_file = 'titles.txt'
 
 # search_url = 'https://searchfloor.org' # All books
-# search_url = 'https://searchfloor.org/popular?category=books&period=today' # Most popular today
-search_url = 'https://searchfloor.org/popular?category=books&period=month' # Most popular month
+search_url = 'https://searchfloor.org/popular?category=books&period=today' # Most popular today
+# search_url = 'https://searchfloor.org/popular?category=books&period=month' # Most popular month
 
 base_url = 'https://searchfloor.org'
 
