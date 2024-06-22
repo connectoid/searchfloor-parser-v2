@@ -84,8 +84,8 @@ def main(session):
                 title = book['title']
                 print(f'Книга {title} уже добавлена, пропускаем.')
                 logging.info(f'Книга {title} уже добавлена, пропускаем.')
-            if count >= books_limit:
-                break
+            # if count >= books_limit:
+            #     break
             sleep(PARSE_INTERVAL)
 
 
