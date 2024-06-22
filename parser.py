@@ -71,7 +71,7 @@ def main(session):
                         id, book_slug = create_post(book)
                         reedon_link = f'https://electrobook.ru/read/{book_slug}-{author_slug}/'
                         reedon_link = reedon_link.replace('-skachat-i-chitat-onlayn', '')
-                        # update_post_by_reedon_link(id, reedon_link)
+                        update_post_by_reedon_link(id, reedon_link)
                         add_title_to_db(book['title'])
                         delete_all_files_in_directory(path)
                     else:
