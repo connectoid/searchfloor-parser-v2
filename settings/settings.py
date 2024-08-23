@@ -34,6 +34,7 @@ logging.basicConfig(
     )
 
 MAX_PDF_SIZE = 4000000
+MIN_FB2_FILE = 200000
 
 api_keys_file = 'api_keys.txt'
 
