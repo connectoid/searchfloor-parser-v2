@@ -28,7 +28,7 @@ def main(session):
         for book in books:
             if not check_is_title_exists(book['title']):
                 filename = download_file(book['url'], path, session)
-                file_size = os.path.getsize(filename)
+                file_size = os.path.getsize(f'{path}/{filename}')
                 if file_size < MIN_FB2_FILE:
                     print('Файл слишком маленький, пропускаем')
                     continue
