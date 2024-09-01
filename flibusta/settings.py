@@ -6,7 +6,7 @@ books_dir = 'books'
 covers_dir = 'cover'
 
 
-search_url = 'https://flibusta.is/stat/24'
+search_url = 'https://flibusta.is/stat/w'
 base_url = 'https://flibusta.is'
 
 title_postfix = ': скачать или читать онлайн'
