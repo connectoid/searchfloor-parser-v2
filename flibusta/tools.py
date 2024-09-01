@@ -208,6 +208,10 @@ def slugify_title(title):
 
 
 def remove_string_with_brackets(string):
-    pattern = r'\[. * ?\]'
-    output_string = re.sub(pattern, '', string)
+    print(string)
+    pattern_1 = r'\s*\(.*?\)\s*'
+    pattern_2 = r'\s*\[.*?\]\s*'
+    output_string = re.sub(pattern_1, '', string)
+    output_string = re.sub(pattern_2, '', output_string)
+    print(output_string)
     return output_string
