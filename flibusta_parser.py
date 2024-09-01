@@ -133,7 +133,7 @@ def main():
     books = get_books(search_url)
     count = 0
     for book in books:
-        if count >= 3:
+        if count > 5:
             break
         if not book['fb2_link'] or not book['epub_link']:
             print('Отсутствуют ссылки на fb2 или epub. Пропускаем')
