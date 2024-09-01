@@ -52,7 +52,11 @@ def get_books(url):
                 book['title'] = title
                 book['authors'] = [items[0].text]
                 book['url'] = base_url + items[1]['href']
-            book_extended = get_one_book(book['url'])
+            try:
+                book_extended = get_one_book(book['url'])
+            except Exception as e:
+                print(f'Error: {e}. Skip book')
+                continue
             if book_extended:
                 book['series'] = book_extended['series']
                 book['description'] = book_extended['description']
