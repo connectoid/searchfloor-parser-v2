@@ -1,6 +1,7 @@
 import os
 import urllib.parse
 import requests
+import re
 
 import pymupdf
 import zipfile
@@ -204,3 +205,9 @@ def slugify_title(title):
                                             ['Ю', 'yu'],
                                         ])
     return slug_title
+
+
+def remove_string_with_brackets(string):
+    pattern = r'\[. * ?\]'
+    output_string = re.sub(pattern, '', string)
+    return output_string

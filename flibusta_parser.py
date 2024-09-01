@@ -8,12 +8,13 @@ from bs4 import BeautifulSoup
 
 from flibusta.tools import (download_file, extract_zip, convert_fb2_to_pdf, init_env, slugify_title, 
                    download_cover, get_file_size, add_title_to_db, delete_all_files_in_directory, 
-                   extract_title_slug_from_fb2, download_epub_file, check_is_title_exists)
+                   extract_title_slug_from_fb2, download_epub_file, check_is_title_exists, remove_string_with_brackets)
 from flibusta.settings import (books_dir, covers_dir, MAX_PDF_SIZE, default_picture_filename, search_url, base_url,
                       MIN_FB2_SIZE)
 from flibusta.gpt import get_description
 from flibusta.posting import (get_category_link_by_id, get_or_create_tag, get_or_create_series, upload_media, 
                      upload_book, update_post_by_reedon_link, create_post)
+
 
 book_url = 'https://flibusta.is/b/707866'
 
@@ -96,7 +97,9 @@ def get_one_book(url):
         all_links = soup.find_all('a')
         series = [link.text for link in all_links if '/s/' in link['href']]
         if series:
-            book['series'] = series[0]
+            series = series[0]
+            series = remove_string_with_brackets(series)
+            book['series'] = series
         txt_links = ''
         fb2_links = [base_url + link['href'] for link in all_links if link.text == '(fb2)']
         epub_links = [base_url + link['href'] for link in all_links if link.text == '(epub)']
