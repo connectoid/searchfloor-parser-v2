@@ -46,6 +46,7 @@ def get_books(url):
             if len(items) > 1:
                 count += 1
                 title = items[1].text.replace('[litres]', '').replace('(СИ)', '').replace('[СИ]', '').replace('[СИ litres]', '').replace('[сборник litres]', '').replace('[АТ]', '').strip()
+                title = remove_string_with_brackets(title)
                 if check_is_title_exists(title):
                     print(f'Книга {title} уже добавлена, пропускаем.')
                     continue

@@ -1,6 +1,7 @@
 import datetime
 
 db_file = 'titles.txt'
+flibusta_db_file = 'flibusta_titles.txt'
 api_keys_file = 'api_keys'
 books_dir = 'books'
 covers_dir = 'cover'

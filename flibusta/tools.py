@@ -215,3 +215,13 @@ def remove_string_with_brackets(string):
     output_string = re.sub(pattern_2, '', output_string)
     print(output_string)
     return output_string
+
+
+def remove_non_letters_and_digits(input_string):
+    pattern = re.compile(r'[^а-яА-Яa-zA-Z0-9 ]')
+    output_string = pattern.sub('', input_string)
+    output_string = output_string.replace("  ", " ")
+    output_string = output_string.lower()
+    return output_string
+
+
