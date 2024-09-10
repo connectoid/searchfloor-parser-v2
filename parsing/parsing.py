@@ -10,7 +10,7 @@ def get_books(url, session):
         soup = BeautifulSoup(response.text, 'lxml')
         main_div = soup.find('div', class_='tab-content')
         # book_divs = main_div.find_all('div', class_='container')
-        book_divs = main_div.find_all('div', {'style': 'margin-top: 1rem;'})
+        book_divs = main_div.find_all('div', {'style': 'margin-top: 0.75rem; margin-bottom: 0.75rem;'})
         count = 0
         skiped = 0
         for book in book_divs:
