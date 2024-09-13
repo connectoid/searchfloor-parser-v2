@@ -7,6 +7,9 @@ import pymupdf
 import zipfile
 from slugify import slugify
 from bs4 import BeautifulSoup
+from fuzzywuzzy import fuzz
+from fuzzywuzzy import process
+
 
 from flibusta.settings import *
 
@@ -223,5 +226,20 @@ def remove_non_letters_and_digits(input_string):
     output_string = output_string.replace("  ", " ")
     output_string = output_string.lower()
     return output_string
+
+
+def check_is_title_exists_by_fuzz(main_title):
+
+    if not os.path.exists(db_file):
+        with open(db_file, 'w') as file:
+            pass
+    with open(db_file, 'r') as file:
+        titles_list = [word.strip() for word in file]
+        for title in titles_list:
+            equal_ratio = fuzz.ratio(main_title, title)
+            if equal_ratio > 90:
+                print(f'{main_title} and {title} is equal by {equal_ratio}%')
+                return True
+        return False
 
 

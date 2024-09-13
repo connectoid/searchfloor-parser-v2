@@ -8,7 +8,8 @@ from bs4 import BeautifulSoup
 
 from flibusta.tools import (download_file, extract_zip, convert_fb2_to_pdf, init_env, slugify_title, 
                    download_cover, get_file_size, add_title_to_db, delete_all_files_in_directory, 
-                   extract_title_slug_from_fb2, download_epub_file, check_is_title_exists, remove_string_with_brackets)
+                   extract_title_slug_from_fb2, download_epub_file, check_is_title_exists, 
+                   remove_string_with_brackets, check_is_title_exists_by_fuzz)
 from flibusta.settings import (books_dir, covers_dir, MAX_PDF_SIZE, default_picture_filename, search_url, base_url,
                       MIN_FB2_SIZE)
 from flibusta.gpt import get_description
@@ -47,9 +48,12 @@ def get_books(url):
                 count += 1
                 title = items[1].text.replace('[litres]', '').replace('(СИ)', '').replace('[СИ]', '').replace('[СИ litres]', '').replace('[сборник litres]', '').replace('[АТ]', '').strip()
                 title = remove_string_with_brackets(title)
-                if check_is_title_exists(title):
+                if check_is_title_exists_by_fuzz(title):
                     print(f'Книга {title} уже добавлена, пропускаем.')
-                    continue
+                    continue 
+                # if check_is_title_exists(title):
+                #     print(f'Книга {title} уже добавлена, пропускаем.')
+                #     continue 
                 book['title'] = title
                 book['authors'] = [items[0].text]
                 book['url'] = base_url + items[1]['href']
