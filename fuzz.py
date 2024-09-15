@@ -3,13 +3,13 @@ from fuzzywuzzy import process
 
 from flibusta.tools import remove_non_letters_and_digits, remove_string_with_brackets, check_is_title_exists_by_fuzz
 
-# str1 = 'Пожарский 4'
-# str2 = 'Пожарский 3'
-# a = fuzz.ratio(str1, str2)
-# print(f'Сравниваем строку "{str1}" со строкой "{str2}" Результат: {a}%')
+str1 = 'Крепкий орешек'
+str2 = 'Крепкий союз'
+a = fuzz.ratio(str1, str2)
+print(f'Сравниваем строку "{str1}" со строкой "{str2}" Результат: {a}%')
 
-result = check_is_title_exists_by_fuzz('Кто внутри 2')
-print(result)
+# result = check_is_title_exists_by_fuzz('Кто внутри 2')
+# print(result)
 
 # Пример использования функции
 # input_string = 'Алхимик [3 сент. 2024, litres] aaaa ssss'

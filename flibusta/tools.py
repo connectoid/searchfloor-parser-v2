@@ -237,7 +237,7 @@ def check_is_title_exists_by_fuzz(main_title):
         titles_list = [word.strip() for word in file]
         for title in titles_list:
             equal_ratio = fuzz.ratio(main_title, title)
-            if equal_ratio > 90:
+            if equal_ratio > EQUAL_RATIO:
                 print(f'{main_title} and {title} is equal by {equal_ratio}%')
                 return True
         return False
