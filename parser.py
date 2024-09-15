@@ -13,7 +13,7 @@ from posting.posting import (create_post, get_or_create_tag, upload_book, upload
 from gpt.gpt import get_description
 from settings.settings import (path, search_url, logging, MAX_PDF_SIZE, PARSE_INTERVAL, default_picture_filename, 
                                MIN_FB2_FILE)
-
+from flibusta.tools import extract_title_slug_from_fb2
 
 
 logging.info('PARSER STARTED')
@@ -75,7 +75,9 @@ def main(session):
                         book['choose_file_txt'] = upload_book(txt_filename, path)
                         count += 1
                         id, book_slug = create_post(book)
-                        reedon_link = f'https://electrobook.ru/read/{book_slug}-{author_slug}/'
+                        book_slug = extract_title_slug_from_fb2(filename, path)
+                        # reedon_link = f'https://electrobook.ru/read/{book_slug}-{author_slug}/'
+                        reedon_link = f'https://electrobook.ru/read/{book_slug}/'
                         reedon_link = reedon_link.replace('-skachat-i-chitat-onlayn', '')
                         update_post_by_reedon_link(id, reedon_link)
                         add_title_to_db(book['title'])

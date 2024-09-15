@@ -169,11 +169,21 @@ def extract_title_slug_from_fb2(filename, path):
     fb2_file = f'{path}/{filename}'
     with open(fb2_file, "r") as file:
         soup = BeautifulSoup(file, "xml")
-    title = soup.find('book-title').text
-    if title == 'Unknown':
+    try:
+        title = soup.find('book-title').text
+        if title == 'Unknown':
+            return False
+    except Exception:
+        title = ''
         return False
-    first_name = soup.find('first-name').text
-    last_name = soup.find('last-name').text
+    try:
+        first_name = soup.find('first-name').text
+    except Exception:
+        first_name = ''
+    try:
+        last_name = soup.find('last-name').text
+    except Exception:
+        last_name = ''
     full_title = f'{title} {first_name} {last_name}'
     slug_title = slugify(full_title, replacements=[
                                             ['я', 'ya'],

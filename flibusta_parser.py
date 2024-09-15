@@ -198,7 +198,7 @@ def main():
             if not title_slug:
                 print(f'Не найдено название книги в мета тегах FB2. Пропускаем.')
                 continue
-            reedon_link = f'https://electrobook.ru/read/{title_slug}'
+            reedon_link = f'https://electrobook.ru/read/{title_slug}' 
             book['reedon_link'] = reedon_link
             count += 1
             id, book_slug = create_post(book)
